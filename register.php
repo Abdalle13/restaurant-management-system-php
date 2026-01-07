@@ -2,6 +2,7 @@
 include("config/db.php");
 
 $message = "";
+$message_type = "";
 
 if (isset($_POST['register'])) {
 
@@ -15,67 +16,131 @@ if (isset($_POST['register'])) {
     $role       = $_POST['role'];
     $status     = "active";
 
-    // Password encryption
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // Insert query
     $sql = "INSERT INTO users 
-    (first_name, last_name, gender, username, password, phone, email, role, status)
-    VALUES
-    ('$first_name','$last_name','$gender','$username','$hashed_password','$phone','$email','$role','$status')";
+        (first_name,last_name,gender,username,password,phone,email,role,status)
+        VALUES
+        ('$first_name','$last_name','$gender','$username','$hashed_password','$phone','$email','$role','$status')";
 
     if (mysqli_query($conn, $sql)) {
-        $message = "Registration successful";
+        $message = "Registration successful. Redirecting to login...";
+        $message_type = "success";
+        header("Refresh:2; url=login.php");
     } else {
-        $message = "Error: " . mysqli_error($conn);
+        $message = "Something went wrong!";
+        $message_type = "error";
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>User Registration</title>
+    <title>Register</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
 <div class="container">
 
-    <h2>User Registration</h2>
+    <div class="brand">
+        <div class="logo">R</div>
+        <p class="subtitle">Create your account</p>
+    </div>
 
-    <p class="message"><?php echo $message; ?></p>
+    <?php if ($message): ?>
+        <div class="alert <?php echo $message_type; ?>">
+            <?php echo $message; ?>
+        </div>
+    <?php endif; ?>
 
     <form method="POST">
 
-        <input type="text" name="first_name" placeholder="First Name" required>
+        <!-- First & Last Name -->
+        <div class="form-row">
+            <div class="field">
+                <label>First Name</label>
+                <input type="text" name="first_name" required>
+            </div>
 
-        <input type="text" name="last_name" placeholder="Last Name" required>
+            <div class="field">
+                <label>Last Name</label>
+                <input type="text" name="last_name" required>
+            </div>
+        </div>
 
-        <select name="gender" required>
-            <option value="">Select Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-        </select>
+        <!-- Gender & Role -->
+        <div class="form-row">
+            <div class="field">
+                <label>Gender</label>
+                <select name="gender" required>
+                    <option value="">Select gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+            </div>
 
-        <input type="text" name="username" placeholder="Username" required>
+            <div class="field">
+                <label>Role</label>
+                <select name="role">
+                    <option value="admin">Admin</option>
+                    <option value="staff">Staff</option>
+                </select>
+            </div>
+        </div>
 
-        <input type="password" name="password" placeholder="Password" required>
+        <!-- Username -->
+        <div class="field">
+            <label>Username</label>
+            <input type="text" name="username" required>
+        </div>
 
-        <input type="text" name="phone" placeholder="Phone">
+        <!-- Password -->
+        <div class="field">
+            <label>Password</label>
+            <div class="password-wrapper">
+                <input type="password" name="password" id="reg-password" required minlength="8">
+                <i class="fa-solid fa-eye eye-icon"
+                   onclick="togglePassword('reg-password', this)"></i>
+            </div>
+        </div>
 
-        <input type="email" name="email" placeholder="Email">
+        <!-- Phone & Email -->
+        <div class="form-row">
+            <div class="field">
+                <label>Phone</label>
+                <input type="text" name="phone">
+            </div>
 
-        <select name="role">
-            <option value="admin">Admin</option>
-            <option value="staff">Staff</option>
-        </select>
+            <div class="field">
+                <label>Email</label>
+                <input type="email" name="email">
+            </div>
+        </div>
 
-        <button type="submit" name="register">Register</button>
-
+        <button name="register" class="btn primary">Create Account</button>
     </form>
 
+    <div class="form-footer">
+        Already have an account? <a href="login.php">Sign in</a>
+    </div>
+
 </div>
+
+<script>
+function togglePassword(id, el) {
+    const input = document.getElementById(id);
+    if (input.type === "password") {
+        input.type = "text";
+        el.classList.replace("fa-eye", "fa-eye-slash");
+    } else {
+        input.type = "password";
+        el.classList.replace("fa-eye-slash", "fa-eye");
+    }
+}
+</script>
 
 </body>
 </html>

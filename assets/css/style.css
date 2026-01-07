@@ -2,54 +2,209 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
+/* ---------- Base ---------- */
 body {
-    background: #f4f6f8;
+    font-family: "Inter", system-ui, sans-serif;
+    background: linear-gradient(180deg, #fffdfb, #fff2e8);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-
+/* ---------- Container ---------- */
 .container {
-    width: 400px;
-    margin: 60px auto;
     background: #ffffff;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    padding: 36px 32px;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    width: 480px;
+    max-width: 92%;
 }
 
-h2 {
+/* ---------- Brand ---------- */
+.brand {
     text-align: center;
-    margin-bottom: 20px;
-    color: #333;
+    margin-bottom: 24px;
 }
 
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background: #2c7be5;
-    border: none;
+.brand .logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(180deg,#ff8a00,#e65c00);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
     color: #fff;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
+    margin-bottom: 8px;
 }
 
-button:hover {
-    background: #1a5ed8;
+.subtitle {
+    font-size: 14px;
+    color: #666;
 }
 
-.message {
+/* ---------- Two Column Layout (Register) ---------- */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+
+
+/* ---------- Alerts ---------- */
+.alert {
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    font-size: 14px;
     text-align: center;
-    margin-bottom: 10px;
-    color: green;
+}
+
+.alert.success {
+    background: #e9f7ef;
+    color: #2f8f48;
+}
+
+.alert.error {
+    background: #fdeaea;
+    color: #c9302c;
+}
+
+/* ---------- Form ---------- */
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.field label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+}
+
+/* ---------- Inputs ---------- */
+input, select {
+    padding: 14px 40px 14px 14px; /* space for eye icon */
+    border-radius: 10px;
+    border: 1px solid #e4e4e4;
+    background: #fafafa;
+    font-size: 15px;
+    width: 100%;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    background: #fff;
+    border-color: #ff8a00;
+    box-shadow: 0 0 0 4px rgba(255,138,0,0.12);
+}
+
+/* ---------- Password Icon ---------- */
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper .eye-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #888;
+}
+
+.password-wrapper .eye-icon:hover {
+    color: #e65c00;
+}
+
+/* ---------- Inline ---------- */
+.field-inline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.checkbox input[type="checkbox"] {
+    width: auto;       /* IMPORTANT */
+    padding: 0;
+    margin: 0;
+}
+.forgot {
+    color: #666;
+    text-decoration: none;
+}
+
+.forgot:hover {
+    text-decoration: underline;
+}
+
+
+/* ---------- Button ---------- */
+.btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn.primary {
+    background: linear-gradient(180deg,#ff8a00,#e65c00);
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 10px 24px rgba(255,138,0,0.25);
+}
+
+.btn.primary:hover {
+    transform: translateY(-1px);
+}
+
+/* ---------- Footer ---------- */
+.form-footer {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 14px;
+}
+
+.form-footer a {
+    color: #e65c00;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 420px) {
+    .container {
+        padding: 24px;
+    }
+}
+
+/* Mobile: single column */
+@media (max-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
 }
