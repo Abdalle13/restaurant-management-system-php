@@ -312,14 +312,7 @@ $stats['total_revenue'] = (float)($stats['total_revenue'] ?? 0);
                                                    title="View Order">
                                                     <i class="fas fa-eye me-1"></i> View
                                                 </a>
-                                                <?php if ($order['status'] === 'pending'): ?>
-                                                <a href="update_status.php?id=<?= $order['id'] ?>&status=processing" 
-                                                   class="btn btn-sm btn-outline-info rounded-pill px-3"
-                                                   title="Process Order"
-                                                   onclick="return confirm('Mark this order as processing?')">
-                                                    <i class="fas fa-spinner me-1"></i> Process
-                                                </a>
-                                                <?php elseif ($order['status'] === 'processing'): ?>
+                                                <?php if ($order['status'] === 'pending' || $order['status'] === 'processing'): ?>
                                                 <a href="update_status.php?id=<?= $order['id'] ?>&status=completed" 
                                                    class="btn btn-sm btn-outline-success rounded-pill px-3"
                                                    title="Complete Order"
