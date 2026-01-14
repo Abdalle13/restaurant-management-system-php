@@ -1,4 +1,5 @@
 <?php
+require_once(__DIR__ . '/config.php');
 // Database configuration
 $host = "localhost";
 $user = "root";
@@ -13,3 +14,5 @@ if (!$conn) {
     die("Database connection failed: " . mysqli_connect_error());
 }
 ?>
+
+
