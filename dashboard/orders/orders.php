@@ -5,7 +5,7 @@ require_admin();
 
 // Get filter parameters
 $status = $_GET['status'] ?? '';
-$date = $_GET['date'] ?? date('Y-m-d');
+$date = $_GET['date'] ?? '';
 
 // Build the query
 $where = [];

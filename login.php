@@ -162,7 +162,7 @@ $flash = get_flash();
         <div class="brand-logo shadow-sm">
             <i class="fas fa-utensils"></i>
         </div>
-        <h3> Pizza Place</h3>
+        <h3>Dha Dhan Wanaag</h3>
         <p>Please enter your details</p>
 
         <?php if (!empty($flash)): ?>

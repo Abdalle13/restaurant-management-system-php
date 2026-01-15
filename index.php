@@ -12,7 +12,7 @@ $menu_res = $conn->query("SELECT * FROM menu_items WHERE status = 'available' LI
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizza Place | Home</title>
+    <title>Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
@@ -61,10 +61,9 @@ $menu_res = $conn->query("SELECT * FROM menu_items WHERE status = 'available' LI
             color: white;
         }
 
-        /* Hero Section - Halkan ayaan ku saxay sawirka galka ku jira */
+        /* Hero Section */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/images/hero.jpg');
-            /* Hubi in magacu yahay hero-bg.jpg */
             background-size: cover;
             background-position: center;
             height: 600px;
@@ -112,17 +111,18 @@ $menu_res = $conn->query("SELECT * FROM menu_items WHERE status = 'available' LI
             margin: 0 auto 20px;
         }
 
-        /* Dishes Card - Halkan ayaan sawirada ku saxay */
-        .dish-card {
+        /* Dishes Card & Testimonial Cards */
+        .dish-card, .testimonial-card {
             border: none;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             transition: 0.3s;
             height: 100%;
             border-radius: 10px;
             overflow: hidden;
+            background: white;
         }
 
-        .dish-card:hover {
+        .dish-card:hover, .testimonial-card:hover {
             transform: translateY(-5px);
         }
 
@@ -131,8 +131,6 @@ $menu_res = $conn->query("SELECT * FROM menu_items WHERE status = 'available' LI
             width: 100%;
             object-fit: cover;
         }
-
-        /* object-fit wuxuu saxayaa sawirka stretch-ka noqonaya */
 
         .price {
             color: var(--orange);
@@ -151,6 +149,18 @@ $menu_res = $conn->query("SELECT * FROM menu_items WHERE status = 'available' LI
         .btn-order:hover {
             background: var(--orange);
             color: white;
+        }
+
+        /* Testimonial Specific Styles */
+        .testimonial-icon {
+            font-size: 40px;
+            color: var(--orange);
+            margin-bottom: 15px;
+        }
+        
+        .stars {
+            color: #ffc107;
+            margin-bottom: 10px;
         }
 
         /* Footer */
@@ -208,7 +218,7 @@ $menu_res = $conn->query("SELECT * FROM menu_items WHERE status = 'available' LI
 
     <nav class="navbar navbar-expand-lg bg-white sticky-top py-3 shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="index.php">Pizza Place</a>
+            <a class="navbar-brand" href="index.php">Dha Dhan Wanaag</a>
             <div class="collapse navbar-collapse justify-content-center">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
@@ -231,7 +241,7 @@ $menu_res = $conn->query("SELECT * FROM menu_items WHERE status = 'available' LI
 
     <section class="hero">
         <div class="container">
-            <h1 class="display-3 fw-bold mb-3">Welcome to Pizza Place</h1>
+            <h1 class="display-3 fw-bold mb-3">Welcome to Dha Dhan Wanaag</h1>
             <p class="fs-5 mb-5 text-light">Experience authentic flavors in a modern setting</p>
             <div class="d-flex justify-content-center">
                 <a href="full_menu.php" class="btn btn-orange rounded shadow">View Menu</a>
@@ -287,11 +297,44 @@ $menu_res = $conn->query("SELECT * FROM menu_items WHERE status = 'available' LI
         </div>
     </section>
 
+    <section class="section-padding">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-2">Customer Testimonials</h2>
+            <p class="text-muted mb-5">Hear from customers who love our service</p>
+            <div class="row g-4">
+                <div class="col-md-4 text-start">
+                    <div class="testimonial-card p-4">
+                        <div class="testimonial-icon"><i class="fas fa-user-circle"></i></div>
+                        <h6 class="fw-bold mb-1">Amina, Mogadishu</h6>
+                        <div class="stars small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-muted small italic">"The best delivery experience! Food was amazing."</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-start">
+                    <div class="testimonial-card p-4">
+                        <div class="testimonial-icon"><i class="fas fa-user-circle"></i></div>
+                        <h6 class="fw-bold mb-1">Khalid, Nairobi</h6>
+                        <div class="stars small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-muted small">"Fresh, fast, tasty! My go-to restaurant."</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-start">
+                    <div class="testimonial-card p-4">
+                        <div class="testimonial-icon "><i class="fas fa-user-circle"></i></div>
+                        <h6 class="fw-bold mb-1">Sarah, Hargeisa</h6>
+                        <div class="stars small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                        <p class="text-muted small">"Love the specials! Hope for more vegetarian options."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
             <div class="row g-5">
                 <div class="col-md-3">
-                    <h5>Pizza Place</h5>
+                    <h5>Dha Dhan Wanaag</h5>
                     <p class="small">Bringing authentic flavors to your table since 2010. We pride ourselves on traditional recipes with a modern twist.</p>
                     <div class="social-icons mt-4">
                         <i class="fab fa-facebook-f text-white me-3"></i>

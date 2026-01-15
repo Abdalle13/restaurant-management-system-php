@@ -189,7 +189,7 @@ $menu_res = $conn->query("SELECT * FROM menu_items WHERE status = 'available' $c
 
     <nav class="navbar navbar-expand-lg bg-white sticky-top py-3 shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="index.php">Pizza Place</a>
+            <a class="navbar-brand" href="index.php">Dha Dhan Wanaag</a>
             <div class="collapse navbar-collapse justify-content-center">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
@@ -269,7 +269,7 @@ $menu_res = $conn->query("SELECT * FROM menu_items WHERE status = 'available' $c
         <div class="container">
             <div class="row g-5">
                 <div class="col-md-3">
-                    <h5>Pizza Place</h5>
+                    <h5>Dha Dhan Wanaag</h5>
                     <p class="small">Bringing authentic flavors to your table since 2010. We pride ourselves on traditional recipes with a modern twist.</p>
                     <div class="social-icons mt-4">
                         <i class="fab fa-facebook-f text-white me-3"></i>

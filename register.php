@@ -107,7 +107,7 @@ $flash = get_flash();
                 <i class="fas fa-user-plus"></i>
             </div>
             <h3 class="fw-bold" style="color: var(--dark-blue);">Create Account</h3>
-            <p class="text-muted small">Join Pizza Place and start ordering today.</p>
+            <p class="text-muted small">Join Dha Dhan Wanaag and start ordering today.</p>
         </div>
 
         <?php if (!empty($flash)): ?>
